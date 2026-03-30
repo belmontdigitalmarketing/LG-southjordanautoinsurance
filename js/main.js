@@ -203,10 +203,31 @@ document.addEventListener('DOMContentLoaded', function () {
       if (loader) { loader.classList.add('active'); }
       if (statusEl) statusEl.style.display = 'none';
 
-      fetch(webhook, {
+      // Get Turnstile token
+      var turnstileWidget = form.querySelector('.cf-turnstile');
+      var turnstileToken = turnstileWidget ? turnstile.getResponse(turnstileWidget) : null;
+      if (turnstileWidget && !turnstileToken) {
+          if (statusEl) {
+              statusEl.style.display = 'block';
+              statusEl.className = 'form-status error';
+              statusEl.textContent = 'Please complete the security check.';
+          }
+          submitBtn.textContent = originalLabel;
+          submitBtn.disabled = false;
+          return;
+      }
+
+      var proxyUrl = 'https://cf-form-proxy.pages.dev/api/submit';
+      var payload = Object.assign({}, formData, {
+          cf_turnstile_token: turnstileToken,
+          cf_webhook_url: webhook,
+          cf_site_key: turnstileWidget ? turnstileWidget.getAttribute('data-sitekey') : ''
+      });
+
+      fetch(turnstileToken ? proxyUrl : webhook, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData)
+        body: JSON.stringify(turnstileToken ? payload : formData)
       })
         .then(function (res) {
           if (!res.ok) throw new Error('Submission failed');

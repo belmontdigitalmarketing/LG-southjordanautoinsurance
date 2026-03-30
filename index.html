@@ -175,7 +175,8 @@
             <form id="heroZipForm">
               <div class="form-row">
                 <input type="text" id="heroZip" placeholder="Enter ZIP (e.g., 84095)" maxlength="5" pattern="[0-9]{5}" inputmode="numeric" required aria-label="ZIP Code">
-                <button type="submit" class="btn btn-primary">Get Quote <i class="fas fa-arrow-right" aria-hidden="true"></i></button>
+                <div class="cf-turnstile" data-sitekey="0x4AAAAAACyGQf02LTDlw4zZ" data-theme="light"></div>
+                    <button type="submit" class="btn btn-primary">Get Quote <i class="fas fa-arrow-right" aria-hidden="true"></i></button>
               </div>
             </form>
           </div>
@@ -557,7 +558,8 @@
                 <input type="checkbox" id="contactConsent" name="consent" required>
                 <label for="contactConsent">I consent to being contacted by Unified Insurance Partners regarding my inquiry. I understand my information will be handled per our <a href="privacy">Privacy Policy</a>.</label>
               </div>
-              <button type="submit" class="btn btn-primary btn-block">Send Message <i class="fas fa-paper-plane" aria-hidden="true"></i></button>
+              <div class="cf-turnstile" data-sitekey="0x4AAAAAACyGQf02LTDlw4zZ" data-theme="light"></div>
+                    <button type="submit" class="btn btn-primary btn-block">Send Message <i class="fas fa-paper-plane" aria-hidden="true"></i></button>
               <div class="form-loader"><div class="spinner"></div> Sending your message...</div>
               <div class="form-status"></div>
             </form>
@@ -632,6 +634,7 @@
     <a href="auto-insurance-quote" class="sticky-quote"><i class="fas fa-file-alt" aria-hidden="true"></i> Free Quote</a>
   </div>
 
-  <script src="js/main.js"></script>
+  <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+    <script src="js/main.js"></script>
 </body>
 </html>

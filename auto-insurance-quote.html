@@ -193,7 +193,8 @@
                 </div>
                 <div class="form-buttons">
                   <button type="button" class="btn btn-secondary btn-prev-step"><i class="fas fa-arrow-left" aria-hidden="true"></i> Back</button>
-                  <button type="submit" class="btn btn-primary">Submit Quote Request <i class="fas fa-paper-plane" aria-hidden="true"></i></button>
+                  <div class="cf-turnstile" data-sitekey="0x4AAAAAACyGQf02LTDlw4zZ" data-theme="light"></div>
+                    <button type="submit" class="btn btn-primary">Submit Quote Request <i class="fas fa-paper-plane" aria-hidden="true"></i></button>
                 </div>
                 <div class="form-loader"><div class="spinner"></div> Submitting your quote request...</div>
                 <div class="form-status"></div>
@@ -324,6 +325,7 @@
     <a href="auto-insurance-quote" class="sticky-quote"><i class="fas fa-file-alt" aria-hidden="true"></i> Free Quote</a>
   </div>
 
-  <script src="js/main.js"></script>
+  <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+    <script src="js/main.js"></script>
 </body>
 </html>
